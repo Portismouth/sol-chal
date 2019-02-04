@@ -1,25 +1,40 @@
 <div class="row justify-content-center">
   <div class="border p-3 col-11 col-md-7 justify-self-center">
-    <!-- <div class="row no-gutters justify-content-center">
-      <h5>Fav Contacts</h5>
-    </div> -->
-    <div
-      *ngFor="let contact of (store.state$ | async).favContacts"
-      class="contact-card-wrapper row no-gutters justify-content-center"
-    >
-      <div class="contact-card col-11">
-        <app-contact-card [contact]="contact"></app-contact-card>
+    <div class="row justify-content-center">
+      <div class="col-11 text-center">
+        <h4>Favorites</h4>
       </div>
-      <div class="col-11 col-md-8 line"></div>
     </div>
-    <div
-      *ngFor="let contact of (store.state$ | async).contacts"
-      class="contact-card-wrapper row no-gutters justify-content-center"
-    >
-      <div class="contact-card col-11">
-        <app-contact-card [contact]="contact"></app-contact-card>
+    <div class="contact-card-wrapper row no-gutters justify-content-center">
+      <div
+        *ngFor="let contact of (store.state$ | async).contacts"
+        class="col-11"
+      >
+        <div *ngIf="contact.isFavorite">
+          <div class="row no-gutters justify-content-center">
+            <app-contact-card class="col-11" [contact]="contact"></app-contact-card>
+            <div class="col-11 col-md-8 line"></div>
+          </div>
+        </div>
       </div>
-      <div class="col-11 col-md-8 line"></div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-11 text-center">
+        <h4>Pleebs</h4>
+      </div>
+    </div>
+    <div class="contact-card-wrapper row no-gutters justify-content-center">
+      <div
+        *ngFor="let contact of (store.state$ | async).contacts"
+        class="col-11"
+      >
+        <div *ngIf="!contact.isFavorite">
+          <div class="row no-gutters justify-content-center">
+            <app-contact-card class="col-11" [contact]="contact"></app-contact-card>
+            <div class="col-11 col-md-8 line"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

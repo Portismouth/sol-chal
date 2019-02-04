@@ -1,11 +1,8 @@
 .contact-card-wrapper {
-  /* border-bottom: 1px solid black; */
   margin-bottom: 10px;
-  /* padding-bottom: 10px; */
 }
 
 .contact-card-wrapper:last-child {
-  /* border-bottom: none; */
   margin-bottom: 0;
   padding-bottom: 0;
 }
