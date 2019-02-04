@@ -12,7 +12,6 @@ import { ContactCardComponent } from './contacts/contact-card/contact-card.compo
 import { ContactDetailComponent } from './contact-details/contact-detail/contact-detail.component';
 import { ContactListComponent } from './contacts/contact-list/contact-list.component';
 
-
 @NgModule({
    declarations: [
       AppComponent,
