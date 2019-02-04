@@ -17,13 +17,20 @@ export class ContactListComponent implements OnInit {
   ngOnInit() {
     if (this.store.state.contacts.length === 0) {
       this.getContacts();
-    } else {
-      this.store.returnContacts();
     }
   }
 
   getContacts(): void {
     this.contactService.getContacts().subscribe((contacts: Contact[]) => {
+      // tslint:disable-next-line:forin
+      // for (const contact in contacts) {
+      //   if (!contacts[contact].isFavorite) {
+      //     this.store.addContact(contacts[contact]);
+      //   } else {
+      //     this.store.addFavContact(contacts[contact]);
+      //   }
+      // }
+
       // tslint:disable-next-line:forin
       for (const contact in contacts) {
         this.store.addContact(contacts[contact]);

@@ -2,52 +2,53 @@
   <div class="border col-11 col-md-7">
     <div class="detail-header row justify-content-between border-bottom">
       <div class="col-4">
-        <a [routerLink]="['']" routerLinkActive="router-link-active">
-          <h6 class="card-title">Contacts Home</h6>
+        <a [routerLink]="['/']">
+          <h6 class="card-title">Contacts</h6>
         </a>
       </div>
-      <div *ngIf="indyContact.isFavorite" class="col-2">
+      <div class="col-2">
         <img
+          *ngIf="indyContact?.isFavorite"
           class="star"
           src="../../../assets/fav-true.png"
           alt="star"
-          (click)="store.unFavorite(indyContact)"
+          (click)="toggleBool()"
         />
-      </div>
-      <div *ngIf="!indyContact.isFavorite" class="col-2">
         <img
+          *ngIf="!indyContact?.isFavorite"
           class="star"
           src="../../../assets/fav-!true.png"
           alt="star"
-          (click)="store.makeFavorite(indyContact)"
+          (click)="toggleBool()"
         />
       </div>
     </div>
-    <div *ngIf="indyContact.name" class="row no-gutters justify-content-center">
+    <div *ngIf="indyContact?.name" class="row no-gutters justify-content-center">
       <div class="col-11 py-2">
         <div class="row no-gutters justify-content-center my-2">
           <img
-            alt="{{ indyContact.name || '../../../assets/user-large.png' }}"
+            alt="{{ indyContact?.name || '../../../assets/user-large.png' }}"
             class="detail-image"
-            [src]="indyContact.largeImageURL"
+            [src]="indyContact?.largeImageURL"
             onerror="src='../../../assets/user-large.png'"
           />
+          {{indyContact.name}}
         </div>
         <div class="row no-gutters justify-content-center">
           <h5>
-            {{ indyContact.name }}
+            {{ indyContact?.name }}
           </h5>
         </div>
         <div class="row no-gutters justify-content-center">
-          <p *ngIf="indyContact.companyName" class="detail-text">
-            {{ indyContact.companyName }}
+          <p *ngIf="indyContact?.companyName" class="detail-text">
+            {{ indyContact?.companyName }}
           </p>
         </div>
       </div>
       <div class="col-11 line"></div>
     </div>
     <div
-      *ngIf="indyContact.phone.home"
+      *ngIf="indyContact?.phone.home"
       class="row no-gutters justify-content-center"
     >
       <div class="col-11 py-2">
@@ -57,7 +58,7 @@
         <div class="row no-gutters">
           <div class="col">
             <p class="detail-text">
-              {{ indyContact.phone.home }}
+              {{ indyContact?.phone.home }}
             </p>
           </div>
           <div class="cell-label col text-right">
@@ -68,7 +69,7 @@
       <div class="col-11 line"></div>
     </div>
     <div
-      *ngIf="indyContact.phone.mobile"
+      *ngIf="indyContact?.phone.mobile"
       class="row no-gutters justify-content-center"
     >
       <div class="col-11 py-2">
@@ -78,7 +79,7 @@
         <div class="row no-gutters">
           <div class="col">
             <p class="detail-text">
-              {{ indyContact.phone.mobile }}
+              {{ indyContact?.phone.mobile }}
             </p>
           </div>
           <div class="cell-label col text-right">
@@ -89,7 +90,7 @@
       <div class="col-11 line"></div>
     </div>
     <div
-      *ngIf="indyContact.phone.work"
+      *ngIf="indyContact?.phone.work"
       class="row no-gutters justify-content-center"
     >
       <div class="col-11 py-2">
@@ -99,7 +100,7 @@
         <div class="row no-gutters">
           <div class="col">
             <p class="detail-text">
-              {{ indyContact.phone.work }}
+              {{ indyContact?.phone.work }}
             </p>
           </div>
           <div class="cell-label col text-right">
@@ -115,21 +116,21 @@
           <p>ADDRESS:</p>
         </div>
         <div class="row no-gutters">
-          <p *ngIf="indyContact.address" class="detail-text">
-            {{ indyContact.address.street }}
+          <p *ngIf="indyContact?.address" class="detail-text">
+            {{ indyContact?.address.street }}
           </p>
         </div>
         <div class="row no-gutters">
-          <p *ngIf="indyContact.address" class="detail-text">
-            {{ indyContact.address.city }} {{ indyContact.address.state }},
-            {{ indyContact.address.zipCode }}
+          <p *ngIf="indyContact?.address" class="detail-text">
+            {{ indyContact?.address.city }} {{ indyContact?.address.state }},
+            {{ indyContact?.address.zipCode }}
           </p>
         </div>
       </div>
       <div class="col-11 line"></div>
     </div>
     <div
-      *ngIf="indyContact.birthdate"
+      *ngIf="indyContact?.birthdate"
       class="row no-gutters justify-content-center"
     >
       <div class="col-11 py-2">
@@ -138,14 +139,14 @@
         </div>
         <div class="row no-gutters">
           <p class="detail-text">
-            {{ indyContact.birthdate | date: 'longDate' }}
+            {{ indyContact?.birthdate | date: 'longDate' }}
           </p>
         </div>
       </div>
       <div class="col-11 line"></div>
     </div>
     <div
-      *ngIf="indyContact.emailAddress"
+      *ngIf="indyContact?.emailAddress"
       class="row no-gutters justify-content-center"
     >
       <div class="col-11 py-2">
@@ -154,7 +155,7 @@
         </div>
         <div class="row no-gutters">
           <p class="detail-text">
-            {{ indyContact.emailAddress }}
+            {{ indyContact?.emailAddress }}
           </p>
         </div>
       </div>

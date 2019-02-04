@@ -3,6 +3,7 @@ import { ContactService } from 'src/app/_services/contact.service';
 import { Contact } from 'src/app/_models/contact';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ContactFavoriteStore } from 'src/app/_stores/contact-favorite.store';
+import { headersToString } from 'selenium-webdriver/http';
 
 @Component({
   selector: 'app-contact-detail',
@@ -12,6 +13,7 @@ import { ContactFavoriteStore } from 'src/app/_stores/contact-favorite.store';
 export class ContactDetailComponent implements OnInit {
   indyContact: Contact;
   contactId: number;
+  theBool = true;
 
   constructor(
     private contactService: ContactService,
@@ -21,10 +23,7 @@ export class ContactDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
-      this.contactId = params['id'];
-    });
-    this.getContact(this.contactId);
+    window.scrollTo(0, 0);
     if (this.store.state.contacts.length === 0) {
       this.contactService.getContacts().subscribe((contacts: Contact[]) => {
         // tslint:disable-next-line:forin
@@ -33,6 +32,10 @@ export class ContactDetailComponent implements OnInit {
         }
       });
     }
+    this.route.params.subscribe((params: Params) => {
+      this.contactId = params['id'];
+      this.getContact(this.contactId);
+    });
   }
 
   getContact(id?: number) {
@@ -47,6 +50,19 @@ export class ContactDetailComponent implements OnInit {
       });
     } else {
       this.indyContact = this.store.getContact(this.contactId) as Contact;
+    }
+  }
+  // A bug popped up where I couldn't update the component with a call to my store - this was the workaround... :(
+  toggleBool() {
+    console.log(this.indyContact.isFavorite);
+    this.indyContact.isFavorite = !this.indyContact.isFavorite;
+    console.log(this.indyContact.isFavorite);
+
+    if (this.indyContact.isFavorite) {
+      this.store.makeFavorite(this.indyContact);
+    }
+    if (!this.indyContact.isFavorite) {
+      this.store.unFavorite(this.indyContact);
     }
   }
 }

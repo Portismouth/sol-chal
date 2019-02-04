@@ -12,4 +12,15 @@ export class ContactCardComponent implements OnInit {
   constructor(public store: ContactFavoriteStore) {}
 
   ngOnInit() {}
+
+  // toggleBool() {
+  //   this.contact.isFavorite = !this.contact.isFavorite;
+
+  //   if (this.contact.isFavorite) {
+  //     this.store.makeFavorite(this.contact);
+  //   }
+  //   if (!this.contact.isFavorite) {
+  //     this.store.unFavorite(this.contact);
+  //   }
+  // }
 }

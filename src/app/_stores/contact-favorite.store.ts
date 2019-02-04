@@ -15,7 +15,7 @@ export class ContactFavoriteStore extends Store<ContactState> {
   }
 
   makeFavorite(contact: Contact): void {
-    console.log('fav');
+    console.log(this.state);
     this.setState({
       ...this.state,
       contacts: this.state.contacts.map(c => {
@@ -28,7 +28,7 @@ export class ContactFavoriteStore extends Store<ContactState> {
   }
 
   unFavorite(contact: Contact): void {
-    console.log('unfave');
+    console.log(this.state);
     this.setState({
       ...this.state,
       contacts: this.state.contacts.map(c => {
@@ -41,14 +41,23 @@ export class ContactFavoriteStore extends Store<ContactState> {
   }
 
   addContact(contact: Contact): void {
-    console.log(contact.isFavorite);
     this.setState({
       ...this.state,
       contacts: [...this.state.contacts, contact]
     });
   }
 
+  addFavContact(contact: Contact): void {
+    this.setState({
+      ...this.state,
+      favContacts: [...this.state.favContacts, contact]
+    });
+  }
+
   returnContacts(): Contact[] {
     return this.state.contacts;
+  }
+  returnFavContacts(): Contact[] {
+    return this.state.favContacts;
   }
 }
