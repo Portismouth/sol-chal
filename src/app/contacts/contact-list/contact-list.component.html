@@ -1,0 +1,21 @@
+<div class="row justify-content-center">
+  <div class="border p-3 col-11 col-md-7 justify-self-center">
+    <div
+      *ngFor="let contact of (store.state$ | async).favContacts"
+      class="row no-gutters justify-content-center"
+    >
+      <div class="col-11">
+        <app-contact-card [contact]="contact"></app-contact-card>
+      </div>
+    </div>
+    <div
+      *ngFor="let contact of (store.state$ | async).contacts"
+      class="contact-card-wrapper row no-gutters justify-content-center"
+    >
+      <div class="contact-card col-11">
+        <app-contact-card [contact]="contact"></app-contact-card>
+      </div>
+      <div class="col-11 col-md-8 line"></div>
+    </div>
+  </div>
+</div>

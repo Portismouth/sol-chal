@@ -1,0 +1,27 @@
+.contact-card-wrapper {
+  /* border-bottom: 1px solid black; */
+  margin-bottom: 10px;
+  /* padding-bottom: 10px; */
+}
+
+.contact-card-wrapper:last-child {
+  /* border-bottom: none; */
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.contact-card {
+  padding-bottom: 10px;
+}
+
+.contact-card-wrapper:last-child .contact-card {
+  padding-bottom: 0;
+}
+
+.line {
+  border-top: 2px solid #dee2e6;
+}
+
+.contact-card-wrapper:last-child .line {
+  display: none;
+}

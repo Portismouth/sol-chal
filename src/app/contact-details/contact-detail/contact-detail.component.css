@@ -1,0 +1,33 @@
+.star {
+  height: 20px;
+  width: auto;
+  cursor: pointer;
+}
+.detail-header {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+p {
+  margin: 0;
+}
+.line {
+  border-top: 2px solid #dee2e6;
+}
+.cell-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.cell-label {
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: 12px;
+}
+.detail-image {
+  height: 80vw;
+  max-height: 300px;
+  width: auto;
+}
+.detail-text {
+  font-size: 16px;
+}
